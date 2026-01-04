@@ -1,0 +1,35 @@
+<html>
+    <body>
+        <div class="login">
+            <h1>FWI Preiction</h1>
+            <!-- Main Input for receiving query to our ML-->
+             <form action="{{url_for('predict_datapoint')}}" method="post">
+                <input type="text" name="Temperature" placeholder="Temperature" required=""required /><br>
+                <input type="text" name="RH" placeholder="RH" required=""required /><br>
+                <input type="text" name="Ws" placeholder="Ws" required=""required /><br>
+                <input type="text" name="Rain" placeholder="Rain" required=""required /><br>
+                <input type="text" name="FFMC" placeholder="FFMC" required=""required /><br>
+                <input type="text" name="DMC" placeholder="DMC" required=""required /><br>
+                <input type="text" name="ISI" placeholder="ISI" required=""required /><br>
+                <input type="text" name="Classes" placeholder="Classes" required=""required /><br>
+                <input type="text" name="Region" placeholder="Region" required=""required /><br>
+
+                <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+                <button type="reset" class="btn btn-primary btn-block btn-large"
+                onclick="document.getElementById('result').innerText='Please fill in the form and click the predict';">Reset</button>
+
+             </form>
+             
+             {% if results is defined %}
+             <h2 id="result">
+                The FWI prediction is {{results}}</h2>
+             {% else %}
+             <h2>
+                Please fill in the form and click the predict
+                </h2>
+             {% endif %}
+    
+            
+        </div>
+    </body>
+</html>
